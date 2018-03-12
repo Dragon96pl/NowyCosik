@@ -73,16 +73,19 @@ namespace ConverterToTBL
 
                         }
                         key = splitLine[0];
-                        from = splitLine[1].Substring(0, splitLine[1].IndexOf("."));
-                        to = splitLine[1].Substring(splitLine[1].LastIndexOf(".") + 1);
-                        from = from.Replace("\\D+", "");
-                        from = from.Replace("(", "");
-                        to = to.Replace("\\D+", "");
-                        from = this.replaceAll(from);
-                        to = this.replaceAll(to);
-                        Regex pattern = new Regex("[a-zA-Z]");
-                        to = pattern.Replace(to, "");
-                        from = pattern.Replace(from, "");
+                        var res = this.getNumbers(splitLine[1]);
+                        //from = splitLine[1].Substring(0, splitLine[1].IndexOf("."));
+                        //to = splitLine[1].Substring(splitLine[1].LastIndexOf(".") + 1);
+                        //from = from.Replace("\\D+", "");
+                        //from = from.Replace("(", "");
+                        //to = to.Replace("\\D+", "");
+                        //from = this.replaceAll(from);
+                        //to = this.replaceAll(to);
+                        //Regex pattern = new Regex("[a-zA-Z]");
+                        //to = pattern.Replace(to, "");
+                        //from = pattern.Replace(from, "");
+                        from = res[0];
+                        to = res[1];
                     }
                     else
                     {
@@ -133,6 +136,30 @@ namespace ConverterToTBL
             value = value.Replace("\\", "");
             value = value.Replace("\"", "");
             return value;
+        }
+
+        protected string[] getNumbers(string text)
+        {
+            string[] results = new string[2];
+            string temp = "";
+            int id = 0;
+            for (int i = 0; i < text.Length; i++)
+            {
+                if (Char.IsDigit(text[i]))
+                    temp += text[i];
+                else if (id >= 2)
+                    return results;
+                else if (!Char.IsDigit(text[i]) && temp != "")
+                {
+                    results[id++] = temp;
+                    
+                    temp = "";
+                }
+            }
+            if(id < 2)
+            results[id] = temp;
+
+            return results;
         }
     }
 

@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ConverterToTBL.exe" size="25576">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ConverterToTBL.exe" size="26088">
       <assemblyIdentity name="ConverterToTBL" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>rrUN4LdviHbveS1P6Bo3v2Jn7AGXHu24cDecpA9Vamg=</dsig:DigestValue>
+        <dsig:DigestValue>n1D+0beSYgUS+HDXIiME4cpQhXZFdu8TQs19xTH3EyI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
