@@ -1,0 +1,14 @@
+c:\users\czopeka\documents\visual studio 2017\Projects\ConverterToTBL\ConverterToTBL\bin\Debug\ConverterToTBL.exe.config
+c:\users\czopeka\documents\visual studio 2017\Projects\ConverterToTBL\ConverterToTBL\bin\Debug\ConverterToTBL.exe
+c:\users\czopeka\documents\visual studio 2017\Projects\ConverterToTBL\ConverterToTBL\bin\Debug\ConverterToTBL.pdb
+c:\users\czopeka\documents\visual studio 2017\Projects\ConverterToTBL\ConverterToTBL\obj\Debug\ConverterToTBL.csprojResolveAssemblyReference.cache
+c:\users\czopeka\documents\visual studio 2017\Projects\ConverterToTBL\ConverterToTBL\obj\Debug\ConverterToTBL.Form1.resources
+c:\users\czopeka\documents\visual studio 2017\Projects\ConverterToTBL\ConverterToTBL\obj\Debug\ConverterToTBL.Properties.Resources.resources
+c:\users\czopeka\documents\visual studio 2017\Projects\ConverterToTBL\ConverterToTBL\obj\Debug\ConverterToTBL.csproj.GenerateResource.Cache
+c:\users\czopeka\documents\visual studio 2017\Projects\ConverterToTBL\ConverterToTBL\obj\Debug\ConverterToTBL.exe
+c:\users\czopeka\documents\visual studio 2017\Projects\ConverterToTBL\ConverterToTBL\obj\Debug\ConverterToTBL.pdb
+C:\Users\czopeka\documents\visual studio 2017\Projects\ConverterToTBL\ConverterToTBL\bin\Debug\ConverterToTBL.exe.manifest
+C:\Users\czopeka\documents\visual studio 2017\Projects\ConverterToTBL\ConverterToTBL\bin\Debug\ConverterToTBL.application
+C:\Users\czopeka\documents\visual studio 2017\Projects\ConverterToTBL\ConverterToTBL\obj\Debug\ConverterToTBL.exe.manifest
+C:\Users\czopeka\documents\visual studio 2017\Projects\ConverterToTBL\ConverterToTBL\obj\Debug\ConverterToTBL.application
+C:\Users\czopeka\Documents\Visual Studio 2017\Projects\ConverterToTBL\ConverterToTBL\obj\Debug\ConverterToTBL.csproj.CoreCompileInputs.cache
