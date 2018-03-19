@@ -11,12 +11,12 @@ namespace ConverterToTBL
     class ConverterGbv2
     {
         public List<TBLForSpecificColumn> tbl = new List<TBLForSpecificColumn>(); //zmienna wynikowa
-        public string readFile(string fileName, string newFileName)
+        public string readFile(string fileName, string newFileName, HashSet<string> keysToDisplay)
         {
             var lines = File.ReadLines(fileName); //zczytanie wszystkich lini pliku
             Boolean start = false; //zmienna start odpowiedzialna za uruchomienie alorytmu analizy pliku
-            string startString = "FEATURES"; // zmienna zawierajaca ciag znakow odpowiedzialny za rozpoczecie analizy
-            string endString = "//"; // zmienna zawierajaca ciag znakow odpowiedzialny za zatrzymanie analizy pliku
+            string startString = FileManagement.StartString; // zmienna zawierajaca ciag znakow odpowiedzialny za rozpoczecie analizy
+            string endString = FileManagement.EndString; // zmienna zawierajaca ciag znakow odpowiedzialny za zatrzymanie analizy pliku
             string key = ""; 
             List<string> names = new List<string>();
             List<string> values = new List<string>();
@@ -33,14 +33,16 @@ namespace ConverterToTBL
                 if (splitLine[0].Contains(endString)) //jezeli linia zawiera ciag znakow konca algorytmu zmienna start = false
                 {
                     start = false;
-                    values.Add(value); 
-                    SpecificColumn column = new SpecificColumn(); //stworzenie nowego obiektu SpecificColumn z aktualnymi wartosciami
-                    column.From = from;
-                    column.Key = key;
-                    column.To = to;
-                    column.Name = names;
-                    column.Value = values;
-                    listOfValues.Add(column);
+                    values.Add(value);
+                    if (keysToDisplay.Count == 0 || keysToDisplay.Contains(key)){
+                        SpecificColumn column = new SpecificColumn(); //stworzenie nowego obiektu SpecificColumn z aktualnymi wartosciami
+                        column.From = from;
+                        column.Key = key;
+                        column.To = to;
+                        column.Name = names;
+                        column.Value = values;
+                        listOfValues.Add(column);
+                    }
                     names = new List<string>();
                     values = new List<string>();
                     value = "";
@@ -57,7 +59,7 @@ namespace ConverterToTBL
                 {
                     if (splitLine.Length > 1) // jezeli linia zawiera slowo kluczowe plus wartosci to
                     {
-                        if (key != "") //jezeli klucz nie jest pusty
+                        if ((key != "" && keysToDisplay.Count == 0) || (key != "" && keysToDisplay.Contains(key))) //jezeli klucz nie jest pusty
                         {
                             values.Add(value); //dodaj do listy wartosci aktualna wartosc
                             SpecificColumn column = new SpecificColumn(); //stworzenie nowego obiektu specific column odpowiadajacego wierszowi np. CDS
@@ -67,12 +69,11 @@ namespace ConverterToTBL
                             column.Name = names;
                             column.Value = values;
                             listOfValues.Add(column);
-                            names = new List<string>();
-                            values = new List<string>();
-                            value = "";
-
                         }
                         key = splitLine[0]; //zczytanie nowego klucz np. CDS
+                        names = new List<string>();
+                        values = new List<string>();
+                        value = "";
                         var res = this.getNumbers(splitLine[1]);
                         //from = splitLine[1].Substring(0, splitLine[1].IndexOf("."));
                         //to = splitLine[1].Substring(splitLine[1].LastIndexOf(".") + 1);

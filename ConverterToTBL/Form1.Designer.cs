@@ -35,11 +35,12 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.analyzeBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 97);
+            this.button1.Location = new System.Drawing.Point(12, 157);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(241, 46);
             this.button1.TabIndex = 0;
@@ -85,12 +86,23 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // analyzeBtn
+            // 
+            this.analyzeBtn.Location = new System.Drawing.Point(13, 108);
+            this.analyzeBtn.Name = "analyzeBtn";
+            this.analyzeBtn.Size = new System.Drawing.Size(240, 43);
+            this.analyzeBtn.TabIndex = 6;
+            this.analyzeBtn.Text = "Analyze";
+            this.analyzeBtn.UseVisualStyleBackColor = true;
+            this.analyzeBtn.Click += new System.EventHandler(this.analyzeBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(271, 164);
+            this.ClientSize = new System.Drawing.Size(646, 215);
+            this.Controls.Add(this.analyzeBtn);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.button2);
@@ -112,6 +124,7 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button analyzeBtn;
     }
 }
 
