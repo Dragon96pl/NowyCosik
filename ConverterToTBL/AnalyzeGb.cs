@@ -11,8 +11,10 @@ namespace ConverterToTBL
     class AnalyzeGb
     {
         static public HashSet<string> Keys { get; set; }
+        static public HashSet<string> Names { get; set; }
         static public void getKeHashSet(string fileName){
             AnalyzeGb.Keys = new HashSet<string>();
+            AnalyzeGb.Names = new HashSet<string>();
             var start = false;
             var lines = File.ReadLines(fileName);
             foreach (var line in lines){
@@ -24,11 +26,14 @@ namespace ConverterToTBL
                 if (start)
                     if (splitLine.Length > 1)
                         AnalyzeGb.Keys.Add(splitLine[0]);
+                    else
+                        if (splitLine[0].Contains("/") && splitLine[0].Contains("="))
+                            AnalyzeGb.Names.Add(splitLine[0].Substring(1, splitLine[0].IndexOf("=")-1));
                 if (splitLine[0].Contains(FileManagement.StartString))
                     start = true;
             };
-            foreach (var e in AnalyzeGb.Keys)
-                Console.WriteLine(e);
+            //foreach (var e in AnalyzeGb.Keys)
+            //    Console.WriteLine(e);
         }
     }
 }

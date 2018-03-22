@@ -11,7 +11,7 @@ namespace ConverterToTBL
     class ConverterGbv2
     {
         public List<TBLForSpecificColumn> tbl = new List<TBLForSpecificColumn>(); //zmienna wynikowa
-        public string readFile(string fileName, string newFileName, HashSet<string> keysToDisplay)
+        public string readFile(string fileName, string newFileName, HashSet<string> keysToDisplay, HashSet<string> namesToDisplay)
         {
             var lines = File.ReadLines(fileName); //zczytanie wszystkich lini pliku
             Boolean start = false; //zmienna start odpowiedzialna za uruchomienie alorytmu analizy pliku
@@ -23,6 +23,7 @@ namespace ConverterToTBL
             string value = "";
             string from = "";
             string to = "";
+            string name = "";
             int idOfFeatures = 1;
             List<SpecificColumn> listOfValues = new List<SpecificColumn>(); //Lista przechowujaca kolejne wiersze Features
             foreach (var line in lines)
@@ -33,7 +34,7 @@ namespace ConverterToTBL
                 if (splitLine[0].Contains(endString)) //jezeli linia zawiera ciag znakow konca algorytmu zmienna start = false
                 {
                     start = false;
-                    values.Add(value);
+                        values.Add(value);
                     if (keysToDisplay.Count == 0 || keysToDisplay.Contains(key)){
                         SpecificColumn column = new SpecificColumn(); //stworzenie nowego obiektu SpecificColumn z aktualnymi wartosciami
                         column.From = from;
@@ -92,14 +93,19 @@ namespace ConverterToTBL
                     {
                         if (splitLine[0].First() == '/' && splitLine[0].Contains('='))
                         {
-                            names.Add(splitLine[0].Substring(1, splitLine[0].IndexOf('=') - 1));
-                            if (value != "")
-                                values.Add(value);
-                            value = this.replaceAll(splitLine[0].Substring(splitLine[0].IndexOf('=') + 1));
+                            name = splitLine[0].Substring(1, splitLine[0].IndexOf('=') - 1);
+                            if(namesToDisplay.Count == 0 || namesToDisplay.Contains(name)){
+                                names.Add(name);
+                                if (value != "")
+                                    values.Add(value);
+                                value = this.replaceAll(splitLine[0].Substring(splitLine[0].IndexOf('=') + 1));
+                            }
+                            
                         }
                         else
                         {
-                            value += " " + this.replaceAll(splitLine[0]);
+                            if(namesToDisplay.Contains(name))
+                                value += " " + this.replaceAll(splitLine[0]);
                         }
 
                     }
