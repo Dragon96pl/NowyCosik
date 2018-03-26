@@ -33,7 +33,7 @@ namespace ConverterToTBL
             //    " ; To = " + this.To + "\n";
             string results = this.From + "\t" + this.To + "\t" + this.Key+"\n";
             for (int i = 0; i < this.Name.Count(); i++)
-                 results += "\t\t\t\t\t\t" + this.Name[i] + "\t" + this.Value[i]+"\n";
+                 results += "\t\t\t\t" + this.Name[i] + "\t" + this.Value[i]+"\n";
             return results;
         }
     }
